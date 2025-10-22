@@ -16,3 +16,5 @@ Instructions:
 4. Start the app.
 
 The app was developed and finished in 20710/2025
+
+This app features libraries such as NumPy and Pandas, and functional calulator to approximate your monthly carbon emissions.
