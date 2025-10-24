@@ -15,6 +15,10 @@ Instructions:
 3. Make sure your Visual Studio is updated.
 4. Start the app.
 
-The app was developed and finished in 20/10/2025
+The app was developed and finished in 24/10/2025.
 
 This app features libraries such as NumPy and Pandas, and functional calulator to approximate your monthly carbon emissions.
+
+With this app we concluded in a satisfactory, and simple way that you can calculate your carbon footprint in a Python app, making it easy to know if your monthly carbon footprint is high or neutral. 
+
+Video: https://drive.google.com/file/d/10_8LzCsuBmu_pIwnSWZdEDeVtpRDSdCj/view?usp=sharing
