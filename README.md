@@ -11,13 +11,13 @@ For our scope we aim to be able to develop the code of the app successfully, and
 
 Instructions:
 1. Use Python 3.13 in Visual Studio. (2022 or Code)
-2. Install NumPy and Pandas so your app can work properly.
+2. Install NumPy, Pandas and Matplotlib so your app can work properly.
 3. Make sure your Visual Studio is updated.
 4. Start the app.
 
 The app was developed and finished in 24/10/2025.
 
-This app features libraries such as NumPy and Pandas, and functional calulator to approximate your monthly carbon emissions.
+This app features libraries such as NumPy, Pandas, Matplotlib, and functional calulator to approximate your monthly carbon emissions.
 
 With this app we concluded in a satisfactory, and simple way that you can calculate your carbon footprint in a Python app, making it easy to know if your monthly carbon footprint is high or neutral. 
 
