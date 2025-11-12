@@ -31,6 +31,47 @@ def get_waste_footprint(waste_kg):
     factor = 0.21
     return float(waste_kg * factor)
 
+# Carbon footprint evaluation based on country
+def get_country_thresholds(country):
+    """
+    Returns (good_threshold, excellent_threshold) in kg CO2 per year
+    These are based on typical thresholds for developed countries
+    """
+    thresholds = {
+        'usa': (6000, 4000),           # Higher threshold for USA
+        'uk': (5000, 3500),            # Moderate threshold
+        'germany': (4500, 3000),       # Lower threshold (more eco-conscious)
+        'india': (3000, 1500),         # Lower threshold (developing country)
+        'australia': (7000, 4500),     # Higher threshold (large country)
+        'mexico': (4000, 2500),        # Moderate threshold
+    }
+    return thresholds.get(country.lower(), (5000, 3500))
+
+def evaluate_footprint(yearly_total, country):
+    """
+    Evaluates carbon footprint using logical operators (and, or, not)
+    Returns a tuple: (status, message)
+    """
+    good_threshold, excellent_threshold = get_country_thresholds(country)
+    
+    # Using logical operators for evaluation
+    is_excellent = yearly_total <= excellent_threshold
+    is_good = yearly_total <= good_threshold and not is_excellent
+    is_poor = not (is_excellent or is_good)
+    
+    if is_excellent:
+        status = "EXCELLENT"
+        message = f"Outstanding! Your carbon footprint ({yearly_total:.2f} kg CO2/year) is well below the excellent threshold ({excellent_threshold} kg CO2/year) for {country}."
+    elif is_good:
+        status = "GOOD"
+        message = f"Great! Your carbon footprint ({yearly_total:.2f} kg CO2/year) is within the good range for {country}. Keep it up!"
+    else:
+        status = "NEEDS IMPROVEMENT"
+        reduction_needed = yearly_total - good_threshold
+        message = f"Your carbon footprint ({yearly_total:.2f} kg CO2/year) is above the good threshold for {country}. Consider reducing your footprint by {reduction_needed:.2f} kg CO2/year."
+    
+    return status, message
+
 # User input functions
 def ask_float(prompt, allow_negative=False):
     while True:
@@ -56,6 +97,9 @@ def ask_choice(prompt, choices):
 
 def main():
     print("=== Carbon Footprint Calculator ===\n")
+
+    # Ask for country (5 options)
+    country = ask_choice("Which country do you live in?", ['USA', 'UK', 'Germany', 'India', 'Australia', 'Mexico'])
 
     # Ask for monthly energy usage (inputs are monthly)
     electricity_kwh = ask_float("Approximate your monthly electricity usage (kWh): ")
@@ -100,6 +144,14 @@ def main():
     # Display and export the report
     print(f"\n=== Your Carbon Footprint Report ({period.capitalize()}) ===")
     print(df.to_string(index=False))
+
+    # Evaluate footprint based on country (convert to yearly if needed)
+    yearly_total = total * 12 if period.lower() == 'monthly' else total
+    status, message = evaluate_footprint(yearly_total, country)
+    
+    print(f"\n=== Carbon Footprint Evaluation for {country} ===")
+    print(f"Status: {status}")
+    print(f"Message: {message}")
 
     out_file = 'carbon_footprint_report.txt'
     df.to_csv(out_file, sep='\t', index=False, float_format='%.2f')
