@@ -15,7 +15,7 @@ Instructions:
 3. Make sure your Visual Studio is updated.
 4. Start the app.
 
-The app is still in process.
+The app has finished development in 12/11/2025.
 
 This app features libraries such as NumPy, Pandas, and a functional calulator to approximate your monthly and yearly carbon emissions.
 
