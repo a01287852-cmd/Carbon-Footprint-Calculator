@@ -17,8 +17,8 @@ Instructions:
 
 The app has finished development in 12/11/2025.
 
-This app features libraries such as NumPy, Pandas, and a functional calulator to approximate your monthly and yearly carbon emissions.
+This app features libraries such as NumPy, Pandas, OS and a functional calulator to approximate your monthly and yearly carbon emissions.
 
 With this app we concluded in a satisfactory, and simple way that you can calculate your carbon footprint in a Python app, making it easy to know if your monthly carbon footprint is high or neutral. 
 
-Video: https://drive.google.com/file/d/10_8LzCsuBmu_pIwnSWZdEDeVtpRDSdCj/view?usp=sharing (Outdated)
+Video: https://drive.google.com/file/d/1TjTTYRKFOsnJvtxsDCjPxrdqLqXFO2HG/view?usp=sharing
